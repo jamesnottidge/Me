@@ -8,8 +8,8 @@ type Props = {
 };
 
 export default async function Page({ params }: Props) {
-  const page = await getPage(params.slug);
-
+  const page = await getPage('about');
+  console.log(page);
 
   return (
     <div>
