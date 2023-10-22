@@ -27,13 +27,15 @@ export default async function Home() {
               className="border-2 border-gray-500 rounded-lg p-1 hover:scale-105 hover:border-blue-500 transition"
             >
               {project.image && (
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  width={750}
-                  height={300}
-                  className="object-cover rounded-lg border border-gray-500"
-                />
+                <div className="w-full h-52 overflow-hidden relative">
+                  <Image
+                    src={project.image}
+                    alt={project.name}
+                    fill={true}
+                    objectFit="cover"
+                    className="rounded-lg border border-gray-500"
+                  />
+                </div>
               )}
               <h1 className="mt-2  bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-red-500 to-purple-600">
                 {project.name}
