@@ -9,12 +9,11 @@ type Props = {
 export default async function Project({ params }: Props) {
   const slug = params.project;
   const project = await getProject(slug);
-  console.log(project);
   return (
     <div>
       <header className="flex justify-between items-center">
         <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-red-500 to-purple-600 text-5xl drop-shadow font-extrabold">
-          {/* {project.name} */}
+          {project.name}
         </h1>
         <a
           href={project.url}

@@ -20,7 +20,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className="max-w-3xl mx-auto py-10">
+      <body className="max-w-5xl mx-auto py-10 px-10">
         <header className="flex items-center justify-between">
           <Link
             href={"/"}
@@ -30,6 +30,9 @@ export default async function RootLayout({
           </Link>
 
           <div className="flex items-center gap-4 text-sm text-gray-600">
+            <Link href={`/articles`} className="hover:underline">
+              Articles
+            </Link>
             {pages.map((page) => (
               <Link
                 href={`/${page.slug}`}
