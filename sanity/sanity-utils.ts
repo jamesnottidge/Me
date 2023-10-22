@@ -68,6 +68,7 @@ export async function getArticles(): Promise<Article[]> {
             title, 
             description,
             "slug": slug.current,
+            tags,
             content
         }`
   );
@@ -81,6 +82,7 @@ export async function getArticle(slug: string): Promise<Article> {
             title, 
             description, 
             "slug": slug.current, 
+            tags,
             content 
         }`,
     { slug }
