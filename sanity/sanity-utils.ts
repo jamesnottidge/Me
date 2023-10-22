@@ -14,7 +14,16 @@ export async function getProjects(): Promise<Project[]> {
             "slug": slug.current,
             "image": image.asset->url,
             url,
-            content
+            content, 
+            body[] {
+                ...,
+                markDefs[]{
+                    ...,
+                    _type == "internalLink" => {
+                        "slug": @.reference->slug.current
+                    }
+                }
+            }
         }`
   );
 }
@@ -29,7 +38,16 @@ export async function getProject(slug: string): Promise<Project> {
             "slug": slug.current,
             "image": image.asset->url,
             url,
-            content
+            content, 
+              body[] {
+                ...,
+                markDefs[]{
+                    ...,
+                    _type == "internalLink" => {
+                        "slug": @.reference->slug.current
+                    }
+                }
+            }
         }`,
     { slug }
   );
@@ -42,6 +60,15 @@ export async function getPages(): Promise<Page[]> {
             _createdAt, 
             title, 
             "slug": slug.current,
+              body[] {
+                ...,
+                markDefs[]{
+                    ...,
+                    _type == "internalLink" => {
+                        "slug": @.reference->slug.current
+                    }
+                }
+            },
             
         }`
   );
@@ -54,7 +81,16 @@ export async function getPage(slug: string): Promise<Page> {
             _createdAt, 
             title, 
             "slug": slug.current,
-            content
+            content, 
+              body[] {
+                ...,
+                markDefs[]{
+                    ...,
+                    _type == "internalLink" => {
+                        "slug": @.reference->slug.current
+                    }
+                }
+            }
         }`,
     { slug }
   );
@@ -69,7 +105,16 @@ export async function getArticles(): Promise<Article[]> {
             description,
             "slug": slug.current,
             tags,
-            content
+            content,
+              body[] {
+                ...,
+                markDefs[]{
+                    ...,
+                    _type == "internalLink" => {
+                        "slug": @.reference->slug.current
+                    }
+                }
+            }
         }`
   );
 }
@@ -83,7 +128,16 @@ export async function getArticle(slug: string): Promise<Article> {
             description, 
             "slug": slug.current, 
             tags,
-            content 
+            content ,
+              body[] {
+                ...,
+                markDefs[]{
+                    ...,
+                    _type == "internalLink" => {
+                        "slug": @.reference->slug.current
+                    }
+                }
+            }
         }`,
     { slug }
   );

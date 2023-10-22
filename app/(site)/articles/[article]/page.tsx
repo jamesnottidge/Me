@@ -1,6 +1,6 @@
 import { getArticle } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
-
+import ViewPortableText from "../../_components/ViewPortableText";
 type Props = {
   params: { article: string };
 };
@@ -9,7 +9,7 @@ const components = {
   block: {
     // Add a custom component for rendering paragraphs with spacing
     normal: ({ children }) => (
-      <p className="my-20">{children}</p> // You can adjust the margin (my-4) as needed
+      <p className="my-14">{children}</p> // You can adjust the margin (my-4) as needed
     ),
     // Define other block types as needed
   },
@@ -28,7 +28,7 @@ export default async function Project({ params }: Props) {
       {/* content  */}
 
       <div className="text-xl lg:text-3xl mt-8">
-             <PortableText value={article.content} components={components} />
+        <ViewPortableText value={article.content} />
         
       </div>
     </div>
