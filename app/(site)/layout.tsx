@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import "../globals.css";
+import Header from "./_components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,29 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="max-w-5xl mx-auto py-10 px-10">
-        <header className="flex items-center justify-between">
-          <Link
-            href={"/"}
-            className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-red-500 to-purple-600"
-          >
-            Nottidge
-          </Link>
-
-          <div className="flex items-center gap-4 text-sm text-gray-600">
-            <Link href={`/articles`} className="hover:underline">
-              Articles
-            </Link>
-            {pages.map((page) => (
-              <Link
-                href={`/${page.slug}`}
-                key={page._id}
-                className="hover:underline"
-              >
-                {page.title}
-              </Link>
-            ))}
-          </div>
-        </header>
+        <Header pages={pages} />
 
         <main className="py-20">{children}</main>
       </body>
