@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import "../globals.css";
+import Footer from "./_components/footer";
 import Header from "./_components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,7 +25,8 @@ export default async function RootLayout({
       <body className="max-w-5xl mx-auto py-10 px-10">
         <Header pages={pages} />
 
-        <main className="py-20">{children}</main>
+        <main className="py-20 min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   );

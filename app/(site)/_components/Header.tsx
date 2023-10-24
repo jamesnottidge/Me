@@ -7,6 +7,7 @@ import { CloseIcon } from "@sanity/icons";
 import avatar from "@/public/assets/images/avatar.jpeg";
 import { Page } from "@/types/Page";
 import FAQ from "./FAQ";
+import Footer from "./footer";
 
 // Your component code
 
@@ -93,6 +94,7 @@ function MobileMenu({ showMobileMenu, setShowMobileMenu, pages }: Props) {
               <hr className="my-6 w-full opacity-10" />
               <FAQ />
             </main>
+            <Footer />
           </div>
         </motion.div>
       )}
