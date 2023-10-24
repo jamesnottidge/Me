@@ -16,92 +16,78 @@ type Props = {
 };
 
 function MobileMenu({ showMobileMenu, setShowMobileMenu, pages }: Props) {
-  const controls = useAnimation();
-  useEffect(() => {
-    if (!showMobileMenu) {
-      controls.start({ x: "-100%" }); // Slide out to the left
-    } else {
-      controls.start({ x: "0" }); // Slide in from the left
-    }
-  }, [showMobileMenu, controls]);
-  const handleToggle = () => {
-    setShowMobileMenu(!showMobileMenu);
-  };
+  console.log("doja", showMobileMenu);
 
   return (
     <AnimatePresence>
       {showMobileMenu && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          key="element"
+          initial={{ x: "100%" }}
+          animate={{ x: "0" }}
+          exit={{ x: "100%" }}
+          transition={{ duration: 0.3 }}
+          className={`fixed inset-0 overflow-y-scroll bg-gray-800 z-[40] text-white`}
         >
-          <div
-            className={`fixed inset-0 overflow-y-scroll bg-gray-800 z-[9999] text-white
-        }`}
-          >
-            <div className="min-h-[700px] mx-auto py-10 px-10">
-              <header className="flex items-center justify-between">
+          <div className="min-h-[700px] mx-auto py-10 px-10">
+            <header className="flex items-center justify-between">
+              <Link
+                href="/"
+                className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-red-500 to-purple-600"
+              >
+                Nottidge
+              </Link>
+
+              <button
+                className="md:hidden" // Hide on medium and larger screens
+                onClick={() => {
+                  setShowMobileMenu(false);
+                  console.log(showMobileMenu);
+                }}
+              >
+                <CloseIcon />
+              </button>
+            </header>
+            <main className="flex flex-col items-center ">
+              <div className="w-24 h-24 overflow-hidden rounded-full relative">
+                <Image
+                  src={avatar}
+                  alt="avatar"
+                  fill={true}
+                  objectFit="cover"
+                  className="rounded-lg border border-blue-500"
+                />
+              </div>
+
+              <div className="mt-4">
+                Hey Im James Nottidge, and I do my best Hey Im James Nottidge,
+                and I do my best. Hey Im James Nottidge, and I do my best. i Hey
+                Im James Nottidge, and I do my best.
+              </div>
+              <hr className="my-4 w-full" />
+              <div className="flex flex-col text-left w-full text-xl">
                 <Link
-                  href="/"
-                  className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-red-500 to-purple-600"
+                  href={`/`}
+                  className="hover:underline mt-8 hover:ml-4 transition"
                 >
-                  Nottidge
+                  Home
                 </Link>
-
-                <button
-                  className="md:hidden" // Hide on medium and larger screens
-                  onClick={() => {
-                    setShowMobileMenu(false);
-                    console.log(showMobileMenu);
-                  }}
+                <Link
+                  href={`/articles`}
+                  className="hover:underline mt-8 hover:ml-4 transition"
                 >
-                  <CloseIcon />
-                </button>
-              </header>
-              <main className="flex flex-col items-center ">
-                <div className="w-24 h-24 overflow-hidden rounded-full relative">
-                  <Image
-                    src={avatar}
-                    alt="avatar"
-                    fill={true}
-                    objectFit="cover"
-                    className="rounded-lg border border-blue-500"
-                  />
-                </div>
-
-                <div className="mt-4">
-                  Hey Im James Nottidge, and I do my best Hey Im James Nottidge,
-                  and I do my best. Hey Im James Nottidge, and I do my best. i
-                  Hey Im James Nottidge, and I do my best.
-                </div>
-                <hr className="my-4 w-full" />
-                <div className="flex flex-col text-left w-full text-xl">
+                  Articles
+                </Link>
+                {pages.map((page) => (
                   <Link
-                    href={`/`}
+                    href={`/${page.slug}`}
+                    key={page._id}
                     className="hover:underline mt-8 hover:ml-4 transition"
                   >
-                    Home
+                    {page.title}
                   </Link>
-                  <Link
-                    href={`/articles`}
-                    className="hover:underline mt-8 hover:ml-4 transition"
-                  >
-                    Articles
-                  </Link>
-                  {pages.map((page) => (
-                    <Link
-                      href={`/${page.slug}`}
-                      key={page._id}
-                      className="hover:underline mt-8 hover:ml-4 transition"
-                    >
-                      {page.title}
-                    </Link>
-                  ))}
-                </div>
-              </main>
-            </div>
+                ))}
+              </div>
+            </main>
           </div>
         </motion.div>
       )}
@@ -128,9 +114,9 @@ export default function Header({ pages }: { pages: Page[] }) {
 
       {/* Mobile menu button */}
       <button
-        className="md:hidden" // Hide on medium and larger screens
+        className="md:hidden z-[60]" // Hide on medium and larger screens
         onClick={() => {
-          setShowMobileMenu(true);
+          setShowMobileMenu(!showMobileMenu);
         }}
       >
         <svg
@@ -165,13 +151,13 @@ export default function Header({ pages }: { pages: Page[] }) {
       </div>
 
       {/* Navigation links */}
-      {showMobileMenu && (
-        <MobileMenu
-          showMobileMenu={showMobileMenu}
-          setShowMobileMenu={setShowMobileMenu}
-          pages={pages}
-        />
-      )}
+      {/* {showMobileMenu && ( */}
+      <MobileMenu
+        showMobileMenu={showMobileMenu}
+        setShowMobileMenu={setShowMobileMenu}
+        pages={pages}
+      />
+      {/* )} */}
     </header>
   );
 }
