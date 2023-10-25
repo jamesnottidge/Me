@@ -18,7 +18,6 @@ type Props = {
 };
 
 function MobileMenu({ showMobileMenu, setShowMobileMenu, pages }: Props) {
-
   return (
     <AnimatePresence>
       {showMobileMenu && (
@@ -80,6 +79,13 @@ function MobileMenu({ showMobileMenu, setShowMobileMenu, pages }: Props) {
                 >
                   Articles
                 </Link>
+                <Link
+                  href={`/projects`}
+                  onClick={() => setShowMobileMenu(false)}
+                  className="hover:underline mt-8 hover:ml-4 transition"
+                >
+                  Projects
+                </Link>
                 {pages.map((page) => (
                   <Link
                     href={`/${page.slug}`}
@@ -128,29 +134,28 @@ export default function Header({ pages }: { pages: Page[] }) {
           setShowMobileMenu(!showMobileMenu);
         }}
       >
-      
-         
-        
-          <svg
-            className="w-6 h-6 text-gray-600 cursor-pointer"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            />
-          </svg>
-        
+        <svg
+          className="w-6 h-6 text-gray-600 cursor-pointer"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          />
+        </svg>
       </button>
 
       <div className="hidden md:flex items-center gap-4 text-sm text-gray-600">
         <Link href={`/articles`} className="hover:underline">
           Articles
+        </Link>
+        <Link href={`/projects`} className="hover:underline">
+          Projects
         </Link>
         {pages.map((page) => (
           <Link

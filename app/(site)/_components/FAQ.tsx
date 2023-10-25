@@ -15,8 +15,6 @@ const darkTheme = createTheme({
   },
 });
 
-
-
 type FAQItem = {
   question: string;
   answer: string;
@@ -38,13 +36,14 @@ const faqs = [
 ];
 export default function FAQ() {
   return (
-     <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-    <div>
+    <div className="w-full">
       <h2 className="font-bold text-2xl pb-3">FAQ</h2>
       {faqs.map((faq, index) => (
         <Accordion key={index} className="bg-blue-400">
-          <AccordionSummary expandIcon={<ExpandIcon />} className="bg-slate-500">
+          <AccordionSummary
+            expandIcon={<ExpandIcon />}
+            className="bg-slate-500"
+          >
             <Typography>{faq.question}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -53,6 +52,5 @@ export default function FAQ() {
         </Accordion>
       ))}
     </div>
-    </ThemeProvider>
   );
 }
