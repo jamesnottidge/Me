@@ -53,7 +53,7 @@ function MobileMenu({ showMobileMenu, setShowMobileMenu, pages }: Props) {
                   src={avatar}
                   alt="avatar"
                   fill={true}
-                  objectFit="cover"
+              
                   className="rounded-lg border border-blue-500"
                 />
               </div>

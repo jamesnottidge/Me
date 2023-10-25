@@ -20,7 +20,7 @@ export default async function ProjectHome() {
                     src={project.image}
                     alt={project.name}
                     fill={true}
-                    objectFit="cover"
+                   
                     className="rounded-lg border border-gray-500"
                   />
                 </div>
