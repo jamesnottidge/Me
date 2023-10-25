@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Accordion,
@@ -37,16 +38,16 @@ const faqs = [
 export default function FAQ() {
   return (
     <div className="w-full">
-      <h2 className="font-bold text-2xl pb-3">FAQ</h2>
+      <h2 className="font-bold text-2xl pb-3 text-orange-400">FAQ</h2>
       {faqs.map((faq, index) => (
-        <Accordion key={index} className="bg-blue-400">
+        <Accordion key={index} className="text-white">
           <AccordionSummary
             expandIcon={<ExpandIcon />}
-            className="bg-slate-500"
+            className="bg-slate-900"
           >
             <Typography>{faq.question}</Typography>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails className="bg-slate-700">
             <Typography>{faq.answer}</Typography>
           </AccordionDetails>
         </Accordion>
