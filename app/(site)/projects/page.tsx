@@ -3,9 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function ProjectHome() {
-    const projects = await getProjects();
+  const projects = await getProjects();
 
-    return (
+  return (
+    <div>
+      <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-red-500 to-purple-600 text-5xl drop-shadow font-extrabold">
+        Projects
+      </h1>
       <div className="mt-5 grid lg:grid-cols-3 md:grid-cols-2 gap-8">
         {projects.map((project) => {
           return (
@@ -15,12 +19,11 @@ export default async function ProjectHome() {
               className="border-2 border-gray-500 rounded-lg p-1 hover:scale-105 hover:border-blue-500 transition"
             >
               {project.image && (
-                <div className="w-full h-52 overflow-hidden relative">
+                <div className="w-full h-60 overflow-hidden relative">
                   <Image
                     src={project.image}
                     alt={project.name}
                     fill={true}
-                   
                     className="rounded-lg border border-gray-500"
                   />
                 </div>
@@ -32,5 +35,6 @@ export default async function ProjectHome() {
           );
         })}
       </div>
-    );
+    </div>
+  );
 }
